@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>FootballPedia</title>
+  <meta name="description" content="Gorontalo Hiden Paradise"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" sizes="96x96" href="img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/icons/icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="img/icons/icon-512x512.png">
+  <link rel="apple-touch-icon" sizes="384x384" href="img/icons/icon-384x384.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="img/icons/icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/icons/icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="img/icons/icon-128x128.png">
+
+  <meta name="theme-color" content="#32B847"/>
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigasi -->
+     <div class="navbar-fixed">
+    <nav class="green accent-4" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo"><img src="img/logo-white.png" style="padding: 5px;" height="60px"></a>
+        <a href="javascript:history.back()" class="sidenav-trigger">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+    </nav>
+  </div>
+    <!-- Akhir Navigasi -->
+    <div class="container">
+        <div class="row a-mt-3">
+            <div class="card-content">
+                <div class="center-align">
+                    <h5 class="a-font-bold a-mb-3">Detail Match Schedule</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="center-align" id="a-preloader">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 id="a-matchDay" class="center-align">Matchday: </h5>
+                    <div id="a-kickOff" class="center-align">Kick Off: </div>
+        
+                    <div class="row" style="margin:20px">
+                      <div class="col s5 right-align truncate">
+                        <span id="a-homeTeamName" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                      <div class="col s2 center-align">
+                        VS
+                      </div>
+                      <div class="col s5 left-align truncate">
+                        <span id="a-awayTeamName" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                    </div>
+        
+                    <div id="a-venue" class="center-align"></div>
+        
+                    <div class="row center">
+                      <hr size="5px">
+                      <h6 class="center-align">Head To Head </h6>
+                      <div class="center-align" id="a-numberOfMatches">Number Of Matches: </div>
+                      <div class="center-align" id="a-totalGoals">total Goals: </div>
+        
+                      <div class="col s4 right-align">
+                        <span id="a-homeTeamWins" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                      <div class="col s4">WINS</div>
+                      <div class="col s4 left-align">
+                        <span id="a-awayTeamWins" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+        
+                      <div class="col s4 right-align">
+                        <span id="a-homeTeamDraws" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                      <div class="col s4">DRAWS</div>
+                      <div class="col s4 left-align">
+                        <span id="a-awayTeamDraws" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+        
+                      <div class="col s4 right-align">
+                        <span id="a-homeTeamLosses" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                      <div class="col s4">LOSSES</div>
+                      <div class="col s4 left-align">
+                        <span id="a-awayTeamLosses" class="a-font-bold blue-text text-darken-2"></span>
+                      </div>
+                    </div>
+                    
+                    <div class="row center">
+                        <div id="addTofavorite" class="center-align">
+                                    <a id="btnFav" class="btn blue">
+                                        <i id="iconFav" class="far fa-star"> &nbsp; Add Favorite</i>
+                                    </a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+     <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/api_football.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/idb.js"></script>
+    <script src="js/detail_schedule.js"></script>
+
+    <script>
+        // REGISTER SERVICE WORKER
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(function () {
+                        console.log("Pendaftaran ServiceWorker berhasil");
+                    })
+                    .catch(function () {
+                        console.log("Pendaftaran ServiceWorker gagal");
+                    });
+            });
+        } else {
+            console.log("ServiceWorker belum didukung browser ini.");
+        }
+          document.addEventListener("DOMContentLoaded", function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = Number(urlParams.get("id"));
+            var isfavorite = false
+            checkData("match_favorite", id).then((msg) => {
+                console.log("statusData: resolve = " + msg)
+                  document.getElementById("iconFav").classList.add('fas');
+                document.getElementById("iconFav").innerHTML = "Remove Favorite";
+                getDetailScheduleById("match")
+                isfavorite = true
+            }).catch((msg) => {
+                console.log("statusData: reject = " + msg)
+                document.getElementById("iconFav").classList.remove('fas');
+                document.getElementById("iconFav").classList.add('far');
+                document.getElementById("iconFav").innerHTML = "Add Favorite";
+                getDetailScheduleById()
+                isfavorite = false
+            })
+
+            var iconFav = document.getElementById("iconFav");
+
+            iconFav.onclick = function () {
+                console.log("Tombol favorite di klik.");
+                if (isfavorite) {
+                    deleteDatafav("match_favorite", id);
+                    isfavorite = false
+                } else {
+                    items = getDetailScheduleById();
+                    items.then(function (match) {
+                        createDataFav("match", match);
+                    });
+                    isfavorite = true
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

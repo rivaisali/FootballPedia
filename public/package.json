@@ -1,0 +1,23 @@
+{
+  "name": "football-pwa",
+  "version": "1.0.0",
+  "description": "Football dengan PWA",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "rivaisali"
+  },
+  "keywords": [
+    "football"
+  ],
+  "author": "Mohammad Rivai Sali",
+  "license": "ISC",
+  "dependencies": {
+    "nodejs": "0.0.0",
+    "npm": "^6.13.4",
+    "web-push": "^3.4.1"
+  }
+}
